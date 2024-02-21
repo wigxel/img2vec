@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
+    <title>Skipe</title>
+</head>
+
+<body>
+    <h1>Image to Vectors</h1>
+    <form action="/search/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file-input" onchange="previewImage()">
+        <input type="submit" value="Upload">
+    </form>
+    <img id="uploaded-image" width="200" height="200" src="" alt="Query image">
+    <script>
+        async function previewImage() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+            const fileReader = new FileReader();
+
+            fileReader.onload = function (e) {
+                document.getElementById('uploaded-image').src = e.target.result;
+            };
+
+            fileReader.readAsDataURL(file);
+        }
+    </script>
+</body>
+
+</html>

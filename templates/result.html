@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
+    <title>Skipe</title>
+</head>
+<body>
+    <h1>Result</h1>
+    {% for image_name, similarity in results.items() %}
+        <div>
+            <img src="{{ url_for('static', path="images/" + image_name) }}" alt="{{ image_name }}" style="width: 100px; height: auto;">
+            <p>Similarity: {{ similarity }}</p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
